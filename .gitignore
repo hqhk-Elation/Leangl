@@ -1,0 +1,40 @@
+# 构建产物
+build/
+build-*/
+out/
+
+# IDE
+.idea/
+.vscode/
+*.user
+
+# clangd / clang 工具链：配置文件与索引缓存
+#
+# 注意 .clangd 不加前导斜杠，可同时匹配仓库根和 test/ 下的那一份；
+# 它也同时覆盖旧版 clangd 用 .clangd/ 目录存缓存的写法。
+.clangd
+.clang-format
+.clang-tidy
+
+# 后台索引与符号缓存
+.cache/
+*.idx
+*.idx.tmp
+.compile_commands.json.tmp
+
+# CMake / 编译中间产物
+CMakeCache.txt
+CMakeFiles/
+compile_commands.json
+cmake_install.cmake
+Makefile
+*.obj
+*.o
+*.a
+*.exe
+*.pdb
+
+# 测试输出
+test/build/
+test/*.bmp
+test/*.png

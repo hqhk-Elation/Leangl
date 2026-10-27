@@ -1,0 +1,53 @@
+{
+  "version": 3,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 20,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "host",
+      "displayName": "Host build + tests (MinGW)",
+      "description": "用主机 gcc 构建库和测试程序，产出 Win32 模拟器与单元测试",
+      "generator": "MinGW Makefiles",
+      "binaryDir": "${sourceDir}/build-host",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "CMAKE_C_COMPILER": "D:/Tools/mingw64/bin/gcc.exe",
+        "LEANGL_BUILD_TESTS": "ON"
+      }
+    },
+    {
+      "name": "riscv",
+      "displayName": "RISC-V cross build (WCH toolchain)",
+      "description": "用 riscv-none-embed-gcc 构建目标平台的静态库，不构建测试",
+      "generator": "MinGW Makefiles",
+      "binaryDir": "${sourceDir}/build",
+      "toolchainFile": "${sourceDir}/riscv-toolchain.cmake",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "LEANGL_BUILD_TESTS": "OFF"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "host",
+      "configurePreset": "host"
+    },
+    {
+      "name": "riscv",
+      "configurePreset": "riscv"
+    }
+  ],
+  "testPresets": [
+    {
+      "name": "host",
+      "configurePreset": "host",
+      "output": {
+        "outputOnFailure": true
+      }
+    }
+  ]
+}
