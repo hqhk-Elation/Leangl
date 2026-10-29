@@ -1,13 +1,30 @@
+/*
+ * Copyright (C) 2026  黄楷翔
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
 /**
- * @file    leangl_sim_demo.c
+ * @file    sim_demo.c
  * @brief   模拟器的演示界面。
  *
- * 实现 leangl_sim.h 里的 leangl_sim_ui()。想换成自己的界面时，复制本文件并
- * 改写 demo_build / demo_pointer / demo_key 即可，引擎（leangl_win32_sim.c）
+ * 实现 sim.h 里的 leangl_sim_ui()。想换成自己的界面时，复制本文件并
+ * 改写 demo_build / demo_pointer / demo_key 即可，引擎（sim_win32.c）
  * 不用动。
  *
  * 布局按屏幕尺寸等比例计算，因此配合 --size 可以看任意分辨率下的效果，
- * 例如：leangl_win32_sim --size 320x240
+ * 例如：leangl_sim --size 320x240
  *
  * 交互：
  *   键盘 S / W   —— 列表选中下一条 / 上一条（循环）
@@ -20,7 +37,7 @@
 
 #include "leangl.h"
 #include "leangl_colors.h"
-#include "leangl_sim.h"
+#include "sim.h"
 
 /* ================================================================== */
 /* 自定义控件：纯色面板                                                 */

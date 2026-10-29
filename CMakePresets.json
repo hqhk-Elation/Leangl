@@ -8,26 +8,54 @@
   "configurePresets": [
     {
       "name": "host",
-      "displayName": "Host build + tests (MinGW)",
-      "description": "用主机 gcc 构建库和测试程序，产出 Win32 模拟器与单元测试",
+      "displayName": "Host build + tests",
+      "description": "用主机编译器构建库、Win32 屏幕模拟器和单元测试。需要 PATH 中有 gcc 与 mingw32-make（MinGW）。",
       "generator": "MinGW Makefiles",
-      "binaryDir": "${sourceDir}/build-host",
+      "binaryDir": "${sourceDir}/build/host",
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Debug",
-        "CMAKE_C_COMPILER": "D:/Tools/mingw64/bin/gcc.exe",
-        "LEANGL_BUILD_TESTS": "ON"
+        "CMAKE_C_COMPILER": "gcc",
+        "LEANGL_BUILD_TESTS": "ON",
+        "LEANGL_INSTALL": "OFF"
+      }
+    },
+    {
+      "name": "host-release",
+      "displayName": "Host build + tests (Release)",
+      "description": "主机 Release 构建，用于对比优化后的行为与代码体积",
+      "generator": "MinGW Makefiles",
+      "binaryDir": "${sourceDir}/build/host-release",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_C_COMPILER": "gcc",
+        "LEANGL_BUILD_TESTS": "ON",
+        "LEANGL_INSTALL": "OFF"
       }
     },
     {
       "name": "riscv",
-      "displayName": "RISC-V cross build (WCH toolchain)",
-      "description": "用 riscv-none-embed-gcc 构建目标平台的静态库，不构建测试",
+      "displayName": "RISC-V cross build",
+      "description": "用 riscv-none-embed-gcc 构建目标平台静态库，不构建测试",
       "generator": "MinGW Makefiles",
-      "binaryDir": "${sourceDir}/build",
-      "toolchainFile": "${sourceDir}/riscv-toolchain.cmake",
+      "binaryDir": "${sourceDir}/build/riscv",
+      "toolchainFile": "${sourceDir}/cmake/toolchain-riscv-none-embed.cmake",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "LEANGL_BUILD_TESTS": "OFF",
+        "LEANGL_INSTALL": "OFF"
+      }
+    },
+    {
+      "name": "riscv-debug",
+      "displayName": "RISC-V cross build (Debug)",
+      "description": "与 riscv 预设相同，但把优化级别与调试信息交给 Debug 构建类型",
+      "generator": "MinGW Makefiles",
+      "binaryDir": "${sourceDir}/build/riscv-debug",
+      "toolchainFile": "${sourceDir}/cmake/toolchain-riscv-none-embed.cmake",
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Debug",
-        "LEANGL_BUILD_TESTS": "OFF"
+        "LEANGL_BUILD_TESTS": "OFF",
+        "LEANGL_INSTALL": "OFF"
       }
     }
   ],
@@ -37,14 +65,29 @@
       "configurePreset": "host"
     },
     {
+      "name": "host-release",
+      "configurePreset": "host-release"
+    },
+    {
       "name": "riscv",
       "configurePreset": "riscv"
+    },
+    {
+      "name": "riscv-debug",
+      "configurePreset": "riscv-debug"
     }
   ],
   "testPresets": [
     {
       "name": "host",
       "configurePreset": "host",
+      "output": {
+        "outputOnFailure": true
+      }
+    },
+    {
+      "name": "host-release",
+      "configurePreset": "host-release",
       "output": {
         "outputOnFailure": true
       }

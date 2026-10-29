@@ -1,15 +1,33 @@
+/*
+ * Copyright (C) 2026  黄楷翔
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
 #ifndef LEANGL_SIM_H
 #define LEANGL_SIM_H
 
 /**
- * @file    leangl_sim.h
+ * @file    sim.h
  * @brief   Win32 屏幕模拟器的对外接口。
  *
  * 模拟器分成两部分：
- *   - 引擎（leangl_win32_sim.c）：窗口、显存 DIB、字库、刷新与 DMA 调度；
- *   - 界面（leangl_sim_demo.c）：实现 leangl_sim_ui()，负责创建控件。
+ *   - 引擎（sim_win32.c）：窗口、显存 DIB、字库、刷新与 DMA 调度、
+ *     以及字库读取/光栅化/刷屏的耗时模型（读 sim_config.ini）；
+ *   - 界面（sim_demo.c）：实现 leangl_sim_ui()，负责创建控件。
  *
- * 写自己的界面时，照着 leangl_sim_demo.c 实现一个 leangl_sim_ui() 即可，
+ * 写自己的界面时，照着 sim_demo.c 实现一个 leangl_sim_ui() 即可，
  * 引擎不需要改动。控件坐标使用屏幕绝对坐标，范围是 build() 收到的
  * width / height，与真实屏幕一致。
  *

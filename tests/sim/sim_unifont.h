@@ -1,8 +1,25 @@
+/*
+ * Copyright (C) 2026  黄楷翔
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
 #ifndef LEANGL_UNIFONT_H
 #define LEANGL_UNIFONT_H
 
 /**
- * @file    unifont.h
+ * @file    sim_unifont.h
  * @brief   从 GNU Unifont 的 .hex 文件加载字体（仅主机端使用）。
  *
  * Unifont 的 .hex 格式每行一条记录：
@@ -21,13 +38,13 @@
  * 因此加载后不需要任何位翻转。
  *
  * 用法：
- *     if (LEANGL_Unifont_Load("test/unifont.hex")) {
+ *     if (LEANGL_Unifont_Load("tests/assets/unifont_all-18.0.01.hex")) {
  *         LEANGL_Set_Font(LEANGL_Unifont_Font());
  *     }
  *     ...
  *     LEANGL_Unifont_Unload();
  *
- * 加载会把整个文件读入内存（unifont.hex 约 8 MB），再建一张按码点排序的
+ * 加载会把整个文件读入内存（unifont_all-18.0.01.hex 约 8 MB），再建一张按码点排序的
  * 索引表供二分查找。主机上内存充裕，这样比反复 fseek 快得多。
  */
 

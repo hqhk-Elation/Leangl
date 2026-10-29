@@ -1,3 +1,20 @@
+/*
+ * Copyright (C) 2026  黄楷翔
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
 /**
  * @file    unifont.c
  * @brief   GNU Unifont .hex 文件加载器。
@@ -11,7 +28,7 @@
  * 一个字符在分块刷新时会被反复取模，走磁盘会明显拖慢模拟器。
  */
 
-#include "unifont.h"
+#include "sim_unifont.h"
 
 #include <stdint.h>
 #include <stdio.h>

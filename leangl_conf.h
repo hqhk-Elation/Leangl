@@ -1,3 +1,20 @@
+/*
+ * Copyright (C) 2026  黄楷翔
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
 #ifndef LEANGL_CONF_H
 #define LEANGL_CONF_H
 
@@ -66,9 +83,13 @@
  *    （单通道 DMA 天然如此），否则刷新会停在该缓冲区上。
  *
  * 只有异步模式才能真正做到“上一块还在发、下一块已经画”。
+ *
+ * 也可以在 CMake 里用 -DLEANGL_FLUSH_ASYNC=1 覆盖本文件的默认值（见根
+ * CMakeLists.txt 的 LEANGL_FLUSH_ASYNC 缓存变量）；该宏会作为 PUBLIC 定义
+ * 传给使用方，保证库与应用的编译结果一致。
  */
 #ifndef LEANGL_FLUSH_ASYNC
-#define LEANGL_FLUSH_ASYNC 1
+#define LEANGL_FLUSH_ASYNC 0
 #endif
 
 #endif

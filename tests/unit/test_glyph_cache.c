@@ -1,3 +1,20 @@
+/*
+ * Copyright (C) 2026  黄楷翔
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
 /**
  * @file    test_glyph_cache.c
  * @brief   字形缓存的主机端测试。
@@ -11,8 +28,8 @@
  *   5. 重新注册字体后缓存失效，回调重新发生。
  *
  * 编译（主机）：
- *   gcc -std=gnu99 -Wall -Wextra -DLEANGL_FLUSH_ASYNC=0 -Iinclude -I.
- *       test/test_glyph_cache.c <library sources> -o test/test_glyph_cache
+ *   cmake --preset host && cmake --build --preset host
+ *   ctest --preset host -R glyph_cache --output-on-failure
  */
 
 #include "leangl.h"

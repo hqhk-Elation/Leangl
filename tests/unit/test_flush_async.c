@@ -1,3 +1,20 @@
+/*
+ * Copyright (C) 2026  黄楷翔
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
 /**
  * @file    test_flush_async.c
  * @brief   LEANGL_Flush() 分块刷新的主机端模拟测试。
@@ -10,11 +27,8 @@
  *   4. 脏区清空后不再调用 flush_cb。
  *
  * 编译（主机）：
- *   gcc -std=gnu99 -Wall -Wextra -DLEANGL_FLUSH_ASYNC=1 -Iinclude -I. test/test_flush_async.c
- *       source/core/leangl_flush.c source/core/leangl_dirty.c source/core/leangl_buffer.c
- *       source/port/leangl_port.c source/widgets/leangl_widget.c source/widgets/leangl_label.c
- *       source/widgets/leangl_button.c source/draw/leangl_draw_shape.c source/draw/leangl_draw_char.c
- *       -o test/test_flush_async
+ *   cmake --preset host && cmake --build --preset host
+ *   ctest --preset host -R flush_async --output-on-failure
  */
 
 #include "leangl.h"
